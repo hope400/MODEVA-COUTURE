@@ -1,13 +1,15 @@
 <?php
 
-$db_name = 'mysql:host=localhost;dbname=fashion_db';
+$db_name = 'mysql:host=localhost;dbname=modeva';
 $user_name = 'root';
 $user_password = '';
+$servername = "localhost";
+$database = "modeva";
 
 $conn = new PDO($db_name, $user_name, $user_password);
 
 if (!$conn) {
-    echo "not connected to database";
+    echo "connected";
 }
 
 function unique_id() {

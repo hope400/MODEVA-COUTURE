@@ -6,7 +6,7 @@ if (isset($_COOKIE['user_id'])) {
 
   $user_id = $_COOKIE['user_id'];
 }else {
-  $user_id - '';
+  //$user_id - '';
 }
 
 ?>
@@ -29,5 +29,33 @@ if (isset($_COOKIE['user_id'])) {
   <title>MODEVA Fashion Website Template</title>
 </head>
 <body>
+  <?php 
+  include 'components/user_header.php';
+
+   ?>
+
+   <?php 
+  include 'components/user_footer.php';
+
+   ?>
+
+
+ <!-- sweetalert cdn link -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+
+    <!-- custom js link -->
+    <script src="jquery.js"></script>
+    <script src="slick.js"></script>
+
+    <script type="text/javascript">
+        <?php include 'script.js'; ?>
+    </script>
+
+    <!-- alert -->
+    <?php include 'components/alert.php'; ?>
+
+
+
+
 </body>
 </html>
