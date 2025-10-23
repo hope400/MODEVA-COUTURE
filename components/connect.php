@@ -1,27 +1,16 @@
 <?php
+$host = 'localhost';
+$user = 'root'; // default username for XAMPP
+$pass = '';     // default password is blank
+$dbname = 'modeva_db'; // make sure this matches your database name
 
-$db_name = 'mysql:host=localhost;dbname=modeva';
-$user_name = 'root';
-$user_password = '';
-$servername = "localhost";
-$database = "modeva";
-
-$conn = new PDO($db_name, $user_name, $user_password);
+$conn = mysqli_connect($host, $user, $pass, $dbname);
 
 if (!$conn) {
-    echo "connected";
+  die("Database connection failed: " . mysqli_connect_error());
 }
 
-function unique_id() {
-    $chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    $charsLength = strlen($chars);
-    $randomString = '';
-
-    for ($i = 0; $i < 20; $i++) {
-        $randomString .= $chars[mt_rand(0, $charsLength - 1)];
-    }
-
-    return $randomString;
-}
-
+// Optional: uncomment for testing
+// echo "Database connected successfully!";
 ?>
+

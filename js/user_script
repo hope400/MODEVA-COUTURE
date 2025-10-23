@@ -1,0 +1,11 @@
+// small scripts for UI interactions
+document.addEventListener('DOMContentLoaded', function(){
+  const menuBtn = document.getElementById('menu-btn');
+  if(menuBtn){
+    menuBtn.addEventListener('click', ()=> document.querySelector('.navbar').classList.toggle('active') );
+  }
+  const searchBtn = document.getElementById('search-btn');
+  if(searchBtn){
+    searchBtn.addEventListener('click', ()=> alert('Search feature placeholder') );
+  }
+});

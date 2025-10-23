@@ -1,61 +1,25 @@
-<?php
+<?php include 'components/user_header.php'; ?>
+<link rel="stylesheet" href="css/user_style.css">
 
-include 'components/connect.php';
+<section class="home-content">
+  <div class="banner compact-banner">
+    <div class="banner-left">
+      <h1><span>Modeva Couture</span></h1>
+      <p>Elevate your wardrobe with timeless, modest fashion — crafted with elegance and confidence for the modern woman.</p>
+      <a href="menu.php" class="btn explore-btn">Shop Now</a>
+    </div>
 
-if (isset($_COOKIE['user_id'])) {
+    <div class="banner-right">
+      <img src="image/fashion.png" alt="Modeva Fashion" />
+    </div>
+  </div>
 
-  $user_id = $_COOKIE['user_id'];
-}else {
-  //$user_id - '';
-}
-
-?>
-
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- box icon cdn link -->
-  <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel='stylesheet'>
-
-  <!---------------------------bootstrap icon link------------------------------>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-  <!---------------------------bootstrap css link------------------------------>
-  <!---------------------------slick slider link------------------------------>
-  <link rel="stylesheet" type="text/css" href="slick.css" />
-  <link rel="stylesheet" type="text/css" href="css/user_style.css?v=<?php echo time(); ?>">
-  
-  <title>MODEVA Fashion Website Template</title>
-</head>
-<body>
-  <?php 
-  include 'components/user_header.php';
-
-   ?>
-
-   <?php 
-  include 'components/user_footer.php';
-
-   ?>
-
-
- <!-- sweetalert cdn link -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
-
-    <!-- custom js link -->
-    <script src="jquery.js"></script>
-    <script src="slick.js"></script>
-
-    <script type="text/javascript">
-        <?php include 'script.js'; ?>
-    </script>
-
-    <!-- alert -->
-    <?php include 'components/alert.php'; ?>
+  <!-- Newsletter Section -->
+  <?php include 'components/newsletter.php'; ?>
+</section>
 
 
 
+<?php include 'components/user_footer.php'; ?>
 
-</body>
-</html>
+<script src="js/script.js"></script>
