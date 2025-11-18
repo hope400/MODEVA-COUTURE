@@ -45,61 +45,86 @@ if (isset($_POST['add'])) {
 <head>
   <meta charset="UTF-8">
   <title>Admin Dashboard | Modeva Couture</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../css/user_style.css">
   <style>
-    body { background:#fffdf8; font-family:'Poppins',sans-serif; padding:50px; }
-    .dashboard { max-width:700px; margin:auto; background:#fff; padding:40px 50px; border-radius:15px; box-shadow:0 5px 25px rgba(0,0,0,0.1); }
+    body { background:#fffdf8; font-family:'Poppins',sans-serif; margin:0; }
+    .dashboard {
+      max-width:700px; margin:auto; background:#fff; padding:40px 50px;
+      border-radius:15px; box-shadow:0 5px 25px rgba(0,0,0,0.1);
+    }
     h2 { text-align:center; color:var(--dark-brown); margin-bottom:20px; }
     form { display:flex; flex-direction:column; gap:15px; }
     input, select, textarea { padding:12px; border:1px solid #ccc; border-radius:10px; font-size:15px; }
     textarea { resize:none; height:100px; }
-    button { background:var(--main-color); color:#fff; border:none; padding:12px; border-radius:30px; font-weight:600; cursor:pointer; transition:0.3s; }
+    button { background:var(--main-color); color:#fff; border:none; padding:12px; border-radius:30px;
+             font-weight:600; cursor:pointer; transition:0.3s; }
     button:hover { background:var(--dark-brown); }
     .message { text-align:center; font-weight:500; margin-bottom:15px; }
     .success { color:green; }
     .error { color:red; }
-    .logout { text-align:right; margin-bottom:15px; }
-    .logout a { color:var(--dark-brown); text-decoration:none; font-weight:500; }
-    .logout a:hover { text-decoration:underline; }
+    .toggle-btn {
+      display:none; position:fixed; top:15px; left:15px; background:#f0b61f; color:#fff;
+      border:none; padding:10px 14px; border-radius:6px; cursor:pointer; z-index:1001;
+    }
+
+    @media(max-width:768px){
+      .toggle-btn{display:block;}
+      .admin-sidebar{left:-240px; transition:0.3s;}
+      .admin-sidebar.active{left:0;}
+      .admin-content{margin-left:0;padding-top:60px;}
+    }
   </style>
 </head>
 <body>
 
-<div class="dashboard">
-  <div class="logout"><a href="logout.php">Logout</a></div>
-  <h2>Add Product to Menu</h2>
+<!-- Sidebar toggle for mobile -->
+<button class="toggle-btn" onclick="toggleSidebar()">☰</button>
 
-  <?php if ($success): ?>
-    <p class="message success"><?= $success; ?></p>
-  <?php elseif ($error): ?>
-    <p class="message error"><?= $error; ?></p>
-  <?php endif; ?>
+<?php include 'admin_sidebar.php'; ?>
 
-  <form method="post" enctype="multipart/form-data">
-    <input type="text" name="name" placeholder="Product Name" required>
-    <textarea name="description" placeholder="Product Description" required></textarea>
+<div class="admin-content">
+  <div class="dashboard">
+    <h2>Add Product to Menu</h2>
 
-    <select name="category" required>
-      <option value="">Select Category</option>
-      <option value="Women">Women</option>
-      <option value="Men">Men</option>
-      <option value="Kids">Kids</option>
-    </select>
+    <?php if ($success): ?>
+      <p class="message success"><?= $success; ?></p>
+    <?php elseif ($error): ?>
+      <p class="message error"><?= $error; ?></p>
+    <?php endif; ?>
 
-    <select name="size" required>
-      <option value="">Select Size</option>
-      <option value="S">S</option>
-      <option value="M">M</option>
-      <option value="L">L</option>
-      <option value="XL">XL</option>
-    </select>
+    <form method="post" enctype="multipart/form-data">
+      <input type="text" name="name" placeholder="Product Name" required>
+      <textarea name="description" placeholder="Product Description" required></textarea>
 
-    <input type="number" step="0.01" name="price" placeholder="Price" required>
-    <input type="file" name="image" accept="image/*" required>
+      <select name="category" required>
+        <option value="">Select Category</option>
+        <option value="Women">Women</option>
+        <option value="Men">Men</option>
+        <option value="Kids">Kids</option>
+      </select>
 
-    <button type="submit" name="add">Add Product</button>
-  </form>
+      <select name="size" required>
+        <option value="">Select Size</option>
+        <option value="S">S</option>
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+      </select>
+
+      <input type="number" step="0.01" name="price" placeholder="Price" required>
+      <input type="file" name="image" accept="image/*" required>
+
+      <button type="submit" name="add">Add Product</button>
+    </form>
+  </div>
 </div>
+
+<script>
+function toggleSidebar() {
+  document.querySelector('.admin-sidebar').classList.toggle('active');
+}
+</script>
 
 </body>
 </html>

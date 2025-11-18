@@ -12,6 +12,8 @@
       <a href="about.php">About Us </a>
       <a href="order.php">Orders</a>
       <a href="menu.php">Shop</a>
+      <a href="reviews.php">Reviews</a>
+
       <a href="contact.php">Contact Us</a>
 
     </nav>

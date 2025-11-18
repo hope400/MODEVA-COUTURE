@@ -897,3 +897,8 @@ body {
 .admin-btn:hover {
   background: var(--dark-brown);
 }
+
+.btn.small-btn:hover {
+  background: #d39c10; /* darker orange */
+}
+
